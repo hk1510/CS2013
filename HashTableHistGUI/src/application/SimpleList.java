@@ -101,7 +101,7 @@ public class SimpleList {
 
         for (int i = 0 ; i < this.size ; i++) {
             Entry e = this.entries[i];
-            result += String.format(formatter, e.getWord(), e.getCount()) + ", ";
+            result += String.format(formatter, e.getWord(), e.getCount()) + "\n";
         }
 
         return result;

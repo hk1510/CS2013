@@ -62,7 +62,12 @@ public class Entry {
 
     @Override
     public int hashCode() {
-        //You must implement this method!!!!
-    	return this.word.hashCode();
+    	int sum = 0;
+    	for (int i = 0; i < this.word.length(); i++) {
+    		//Using Horner's rule for polynomial evaluation (from Liang book)
+    		//Equivalent to s_0 * b^(n-1) + s_1 * b^(n-2) + ... + s_(n-1)
+    		sum = sum * 31 + word.charAt(i);
+    	}
+    	return Math.abs(sum);
     }
 }
