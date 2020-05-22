@@ -6,7 +6,7 @@ package application;
  * YOU ARE NOT ALLOWED TO ALTER THIS CLASS other than adding implementation for the hashCode() method.
  * If you wish to change something that you feel would increase performance, you must ask me first.
  */
-public class Entry {
+public class Entry implements Comparable<Entry>{
 
     //The word to store in the Entry, this will be a key value for your hash table.
     private String word;
@@ -63,11 +63,23 @@ public class Entry {
     @Override
     public int hashCode() {
     	int sum = 0;
+    	/**
+		 * I used Horner's rule for polynomial evaluation (from Liang book)
+		 * Equivalent to s_0 * b^(n-1) + s_1 * b^(n-2) + ... + s_(n-1)
+		 * Ran faster than using Math.pow() 
+		 * HashTable with Math.pow() ran in around 5 seconds 
+		 * HashTable with Horner's rule ran in around 2 seconds
+		 */
     	for (int i = 0; i < this.word.length(); i++) {
-    		//Using Horner's rule for polynomial evaluation (from Liang book)
-    		//Equivalent to s_0 * b^(n-1) + s_1 * b^(n-2) + ... + s_(n-1)
     		sum = sum * 31 + word.charAt(i);
     	}
     	return Math.abs(sum);
     }
+
+	@Override
+	public int compareTo(Entry o) {
+		return this.word.compareTo(o.getWord());
+	}
+
+	
 }

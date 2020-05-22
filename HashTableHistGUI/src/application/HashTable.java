@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+
 public class HashTable { 
 	
 	private static final double MAX_LOAD_FACTOR = 0.5;
@@ -70,9 +72,14 @@ public class HashTable {
 		}
 		return candidate;
 	}
-	public Entry[] sort() {
-		Entry[] sortedList = new Entry[10];
-		return sortedList;
+	public ArrayList<Entry> list() {
+		ArrayList<Entry> list = new ArrayList<>();
+		for (int i = 0; i < hashTable.length; i++) {
+			if (hashTable[i] != null) {
+				list.add(hashTable[i]);
+			}
+		}
+		return list;
 	}
 	public String toString() {
         String formatter = "%-20s%-1d";
